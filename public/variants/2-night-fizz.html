@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Saudi Sukkari — Вариант 2 · Night Fizz</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#061238;--bg2:#0B1D55;--card:#10246A;--orange:#FF9F1C;--lime:#B5E61D;--red:#FF3B5C;--txt:#EAF0FF;--muted:#9DB0E0;--line:#22397F}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--txt);font:400 16px/1.6 'Onest',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.d{font-family:'Unbounded',sans-serif;letter-spacing:-.02em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:#1A0E00;padding:18px 28px;border-radius:14px;text-decoration:none;font:600 16px 'Onest';border:0;cursor:pointer;box-shadow:0 10px 30px rgba(255,159,28,.35);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--txt);border:1.5px solid var(--line);box-shadow:none}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;background:rgba(181,230,29,.12);color:var(--lime);font-size:13px;font-weight:600}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:80px}
+.logo{font-family:'Unbounded';font-weight:900;font-size:18px;text-decoration:none;letter-spacing:.02em}
+.logo i{font-style:normal;color:var(--orange)}
+.hero{position:relative;padding:40px 0 0;text-align:center;background:radial-gradient(60% 50% at 50% 70%,#1C46B8 0%,transparent 70%)}
+.hero h1{font-family:'Unbounded';font-weight:900;font-size:clamp(30px,7.2vw,108px);overflow-wrap:anywhere;line-height:.95;margin:22px auto 0;max-width:1100px;text-transform:uppercase}
+.hero h1 .o{color:var(--orange)}
+.hero h1 .l{color:var(--lime)}
+.hero p{max-width:620px;margin:26px auto 0;font-size:19px;color:var(--muted)}
+.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.hero img{margin:48px auto 0;width:min(1000px,100%);-webkit-mask-image:linear-gradient(#000 75%,transparent);mask-image:linear-gradient(#000 75%,transparent)}
+.ticker{background:var(--orange);color:#1A0E00;overflow:hidden;white-space:nowrap;transform:rotate(-1.5deg);margin:0 -20px}
+.ticker div{display:inline-block;padding:16px 0;font:900 22px 'Unbounded';text-transform:uppercase;animation:mq 30s linear infinite}
+.ticker span{margin:0 28px}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:120px 0}
+.kicker{font:700 13px 'Unbounded';color:var(--orange);text-transform:uppercase;letter-spacing:.08em}
+h2{font-family:'Unbounded';font-weight:700;font-size:clamp(30px,4.2vw,58px);line-height:1.05;margin:16px 0 0;max-width:900px}
+.sub{color:var(--muted);font-size:18px;max-width:640px;margin:20px 0 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:56px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px}
+.stat b{display:block;font:900 44px 'Unbounded';line-height:1}
+.stat:nth-child(1) b{color:var(--orange)}.stat:nth-child(2) b{color:var(--lime)}.stat:nth-child(3) b{color:var(--red)}
+.stat p{margin:14px 0 0;color:var(--muted)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.split img{border-radius:28px;width:100%;aspect-ratio:4/3;object-fit:cover}
+.checks{list-style:none;padding:0;margin:32px 0 0;display:grid;gap:14px}
+.checks li{display:flex;gap:14px;align-items:flex-start;font-size:17px}
+.checks li::before{content:"✓";flex:none;width:28px;height:28px;border-radius:9px;background:var(--lime);color:#0B1D00;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+.aud{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:56px}
+.aud div{border-radius:24px;padding:30px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between}
+.aud div:nth-child(1){background:#FF9F1C;color:#1A0E00}
+.aud div:nth-child(2){background:#B5E61D;color:#0B1D00}
+.aud div:nth-child(3){background:#FF3B5C;color:#fff}
+.aud div:nth-child(4){background:#EAF0FF;color:#061238}
+.aud h3{font:700 22px 'Unbounded';margin:0}
+.aud p{margin:0;font-size:15px;opacity:.85}
+.more{background:var(--bg2);border-radius:32px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+.more img{width:100%;height:100%;max-height:460px;object-fit:cover;min-height:340px}
+.more .t{padding:56px}
+@media(max-width:900px){.more{grid-template-columns:1fr}.more .t{padding:32px}}
+.faq{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:48px}
+.faq div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.faq h3{font:700 17px 'Unbounded';margin:0}
+.faq p{margin:10px 0 0;color:var(--muted);font-size:15px}
+.final{background:linear-gradient(135deg,#FF9F1C,#FF6B1C);color:#1A0E00;border-radius:36px;padding:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+@media(max-width:900px){.final{grid-template-columns:1fr;padding:32px}}
+.final h2{color:#1A0E00}
+.final p{font-size:18px;margin:18px 0 0}
+form{background:#061238;color:var(--txt);border-radius:24px;padding:28px;display:grid;gap:14px}
+input,select{height:56px;border-radius:12px;border:1px solid var(--line);background:#0B1D55;color:#fff;padding:0 16px;font:400 16px 'Onest';outline:none}
+input:focus,select:focus{border-color:var(--orange)}
+input::placeholder{color:#7C8FC2}
+form small{color:var(--muted);font-size:12px;text-align:center}
+footer{padding:48px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.wa{position:fixed;right:22px;bottom:22px;z-index:40;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">SAUDI<i>/</i>SUKKARI</a>
+  <a class="btn alt" href="#order" style="padding:12px 18px;font-size:14px">Прайс в WhatsApp</a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <span class="pill">Новинка для полок России и Казахстана</span>
+  <h1>Вкус, которого <span class="o">нет</span> у&nbsp;ваших <span class="l">конкурентов</span></h1>
+  <p>Kinza — одна из самых популярных газировок Саудовской Аравии. Привозим её оптом напрямую с завода. Новая марка на полке — новые покупатели в магазине.</p>
+  <div class="cta"><a class="btn" href="#order">Получить оптовый прайс</a><a class="btn alt" href="#why">Почему это продаётся</a></div>
+  <img src="/images/kinza-lineup.jpg" alt="Линейка напитков Kinza">
+</div></div>
+
+<div style="overflow:hidden;padding:24px 0;margin-top:-54px;position:relative;z-index:2"><div class="ticker" aria-hidden="true"><div><span>Cola</span>✦<span>Orange</span>✦<span>Lemon</span>✦<span>Citrus</span>✦<span>Diet Cola</span>✦<span>Cocktail</span>✦<span>Cola</span>✦<span>Orange</span>✦<span>Lemon</span>✦<span>Citrus</span>✦<span>Diet Cola</span>✦<span>Cocktail</span>✦<span>Cola</span>✦<span>Orange</span>✦<span>Lemon</span>✦<span>Citrus</span>✦<span>Diet Cola</span>✦<span>Cocktail</span>✦<span>Cola</span>✦<span>Orange</span>✦<span>Lemon</span>✦<span>Citrus</span>✦<span>Diet Cola</span>✦<span>Cocktail</span>✦</div></div></div>
+
+<section id="why"><div class="wrap">
+  <span class="kicker">Почему это продаётся</span>
+  <h2>Покупатель устал от одних и тех же банок на полке</h2>
+  <p class="sub">Экзотика из Саудовской Аравии цепляет взгляд, провоцирует «попробовать» и даёт вам цену, которую не с чем сравнить в соседнем магазине.</p>
+  <div class="stats">
+    <div class="stat"><b>Яркость</b><p>Банки в цветах вкусов: оранжевый, лайм, синий. Полка сама превращается в витрину.</p></div>
+    <div class="stat"><b>Маржа</b><p>Нет прямого сравнения цен с соседями — вы сами решаете, сколько стоит импортная новинка.</p></div>
+    <div class="stat"><b>Халяль</b><p>Продукция из Саудовской Аравии — сильный аргумент для мусульманской аудитории.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap split">
+  <img src="/images/kinza.jpg" alt="Kinza Diet Cola" loading="lazy">
+  <div>
+    <span class="kicker">Без посредников</span>
+    <h2>Прямо с завода — на ваш склад</h2>
+    <ul class="checks">
+      <li>Наша команда в Саудовской Аравии работает с заводом напрямую</li>
+      <li>Фото и видео вашей партии перед отгрузкой</li>
+      <li>Сертификаты, маркировка и растаможка — на нас</li>
+      <li>Доставка по России и Казахстану</li>
+      <li>Можно начать с пробной партии</li>
+    </ul>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <span class="kicker">Кому подходит</span>
+  <h2>Для всех, кто продаёт напитки</h2>
+  <div class="aud">
+    <div><h3>Магазины и сети</h3><p>Новая позиция, которая выделяет вас среди конкурентов.</p></div>
+    <div><h3>Кафе и фастфуд</h3><p>Необычная газировка в меню — повод для фото и повторного визита.</p></div>
+    <div><h3>Дистрибьюторы</h3><p>Свежая марка в портфеле и стабильные поставки от импортёра.</p></div>
+    <div><h3>Халяль-маркеты</h3><p>Товар с понятным происхождением для лояльной аудитории.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="more">
+    <img src="/images/dates.jpg" alt="Саудовские финики" loading="lazy" style="object-position:center 55%">
+    <div class="t">
+      <span class="kicker">А ещё</span>
+      <h2 style="font-size:clamp(26px,3vw,40px)">Саудовские финики и импорт под заказ</h2>
+      <p class="sub">Суккари и другие сорта — к сезону Рамадана. А если нужен любой другой товар из Саудовской Аравии — найдём производителя и привезём.</p>
+      <a class="btn" href="#order" style="margin-top:28px">Узнать подробнее</a>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <span class="kicker">Вопросы</span>
+  <h2>Коротко о главном</h2>
+  <div class="faq">
+    <div><h3>Минимальная партия?</h3><p>Зависит от товара. Есть пробный формат, чтобы проверить спрос.</p></div>
+    <div><h3>Сроки?</h3><p>Назовём точный срок вместе с прайсом — зависит от объёма и города.</p></div>
+    <div><h3>Документы?</h3><p>Да. Сертификаты, маркировка и таможня — на нас.</p></div>
+    <div><h3>С кем работаете?</h3><p>С юрлицами и ИП в России и Казахстане.</p></div>
+  </div>
+</div></section>
+
+<section id="order" style="padding-top:0"><div class="wrap">
+  <div class="final">
+    <div>
+      <h2>Прайс + расчёт вашей наценки — за 15 минут</h2>
+      <p>Оставьте контакты — пришлём в WhatsApp оптовые цены, условия доставки в ваш город и подскажем, по какой цене выгодно ставить на полку.</p>
+      <p style="font-weight:600;margin-top:24px"><a href="tel:+77081888099" style="text-decoration:none">+7 708 188 80 99</a></p>
+    </div>
+    <form class="lead">
+      <input name="name" placeholder="Имя или компания" required autocomplete="organization">
+      <input name="phone" type="tel" placeholder="Телефон / WhatsApp" required autocomplete="tel">
+      <input name="city" placeholder="Город">
+      <select name="need"><option>Напитки Kinza</option><option>Финики</option><option>Kinza + финики</option><option>Другой товар под заказ</option></select>
+      <button class="btn" type="submit">Получить прайс →</button>
+      <small>Откроется чат WhatsApp с готовым сообщением</small>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© Saudi Sukkari · Импорт из Саудовской Аравии</span><span>+7 708 188 80 99 · dosnet2200@gmail.com</span></div></footer>
+
+<a class="wa" href="https://wa.me/77081888099" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9A11.8 11.8 0 0 0 12.05 0Zm0 21.79a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.88 9.88 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35Z"/></svg></a>
+
+<script>
+document.querySelectorAll('form.lead').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();
+  var t='Здравствуйте! Хочу оптовый прайс.\nИмя/компания: '+f.name.value.trim()+'\nТелефон: '+f.phone.value.trim()+(f.city.value.trim()?'\nГород: '+f.city.value.trim():'')+'\nИнтересует: '+f.need.value;
+  window.open('https://wa.me/77081888099?text='+encodeURIComponent(t),'_blank','noopener');});});
+</script>
+</body>
+</html>
