@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Saudi Sukkari — Вариант 4 · Bold Route</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--k:#0E0E0E;--c:#F2EEE6;--o:#FF5A1F;--y:#FFC21A;--muted:#6E6A63}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--c);color:var(--k);font:400 17px/1.55 'Inter Tight',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1360px;margin:0 auto;padding:0 24px}
+.big{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.88;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;gap:14px;background:var(--o);color:#fff;padding:20px 30px;text-decoration:none;font:600 17px 'Inter Tight';border:3px solid var(--k);box-shadow:6px 6px 0 var(--k);cursor:pointer;transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--k)}
+.btn.w{background:var(--c);color:var(--k)}
+header{border-bottom:3px solid var(--k)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:76px}
+.logo{font:700 26px 'Oswald';text-transform:uppercase;text-decoration:none}
+.logo span{background:var(--k);color:var(--c);padding:0 8px;margin-left:4px}
+header a.ph{font-weight:600;text-decoration:none}
+.hero{padding:56px 0 0}
+.hero h1{font-size:clamp(64px,13vw,210px);margin:0}
+.hero h1 .o{color:var(--o)}
+.hero .row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-top:36px;padding-bottom:56px}
+@media(max-width:860px){.hero .row{grid-template-columns:1fr}}
+.hero p{font-size:21px;margin:0;max-width:560px}
+.hero .r{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:860px){.hero .r{justify-content:flex-start}}
+.route{background:var(--k);color:var(--c);border-block:3px solid var(--k)}
+.route .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.route div{padding:28px 24px;border-right:1px solid #333}
+.route div:last-child{border-right:0}
+.route small{display:block;color:#8C877E;font-size:13px;text-transform:uppercase;letter-spacing:.12em}
+.route b{font:700 34px 'Oswald';text-transform:uppercase}
+.route div:first-child b{color:var(--y)}
+@media(max-width:700px){.route .wrap{grid-template-columns:1fr}.route div{border-right:0;border-bottom:1px solid #333}}
+.photo{border-bottom:3px solid var(--k)}
+.photo img{width:100%;height:clamp(320px,52vw,680px);object-fit:cover}
+.pain{padding:120px 0;border-bottom:3px solid var(--k)}
+.pain h2{font-size:clamp(44px,7vw,110px);margin:0}
+.pain .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:56px}
+.pain .g div{border:3px solid var(--k);padding:28px;background:#fff}
+.pain .g b{font:700 24px 'Oswald';text-transform:uppercase;display:block;text-decoration:line-through;text-decoration-color:var(--o);text-decoration-thickness:4px}
+.pain .g p{margin:12px 0 0;color:var(--muted)}
+.solve{background:var(--o);color:#fff;padding:120px 0;border-bottom:3px solid var(--k)}
+.solve h2{font-size:clamp(44px,7vw,110px);margin:0;color:var(--k)}
+.solve .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;margin-top:56px}
+.solve .g h3{font:700 30px 'Oswald';text-transform:uppercase;margin:0;color:var(--k)}
+.solve .g p{margin:10px 0 0;font-size:18px}
+.goods{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:3px solid var(--k)}
+@media(max-width:900px){.goods{grid-template-columns:1fr}}
+.goods a{text-decoration:none;border-right:3px solid var(--k);display:flex;flex-direction:column;background:#fff}
+.goods a:last-child{border-right:0}
+@media(max-width:900px){.goods a{border-right:0;border-bottom:3px solid var(--k)}}
+.goods img{aspect-ratio:1;object-fit:cover;border-bottom:3px solid var(--k);transition:filter .2s}
+.goods a:hover img{filter:saturate(1.3)}
+.goods .t{padding:24px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.goods h3{font:700 36px 'Oswald';text-transform:uppercase;margin:0;line-height:1}
+.goods span{font-size:28px}
+.goods p{margin:0 24px 24px;color:var(--muted)}
+.marq{background:var(--y);overflow:hidden;white-space:nowrap;border-bottom:3px solid var(--k)}
+.marq div{display:inline-block;font:700 44px 'Oswald';text-transform:uppercase;padding:14px 0;animation:m 25s linear infinite}
+@keyframes m{to{transform:translateX(-50%)}}
+.faq{padding:120px 0;border-bottom:3px solid var(--k)}
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+@media(max-width:900px){.faq .wrap{grid-template-columns:1fr}}
+.faq h2{font-size:clamp(48px,6vw,96px);margin:0}
+details{border-top:3px solid var(--k);padding:22px 0}
+details:last-child{border-bottom:3px solid var(--k)}
+summary{cursor:pointer;font:600 20px 'Inter Tight';list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"↓";font-family:'Oswald'}
+details[open] summary::after{content:"↑"}
+details p{margin:12px 0 0;color:var(--muted)}
+.contact{background:var(--k);color:var(--c);padding:120px 0}
+.contact h2{font-size:clamp(56px,10vw,160px);margin:0}
+.contact h2 .y{color:var(--y)}
+.contact .g{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:56px}
+@media(max-width:900px){.contact .g{grid-template-columns:1fr}}
+.contact p{font-size:20px;margin:0;color:#BDB7AC}
+.contact .ph{display:block;font:700 44px 'Oswald';color:var(--c);text-decoration:none;margin-top:28px}
+form{display:grid;gap:16px}
+input{height:64px;background:var(--c);border:3px solid var(--c);color:var(--k);padding:0 18px;font:500 18px 'Inter Tight';outline:none}
+input:focus{border-color:var(--y)}
+form .btn{justify-content:center;border-color:var(--c);box-shadow:6px 6px 0 var(--y)}
+footer{background:var(--k);color:#8C877E;font-size:14px;border-top:1px solid #2A2A2A}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:28px 24px}
+.wa{position:fixed;right:22px;bottom:22px;z-index:40;width:62px;height:62px;background:#25D366;display:flex;align-items:center;justify-content:center;border:3px solid var(--k);box-shadow:4px 4px 0 var(--k)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Saudi<span>Sukkari</span></a>
+  <a class="ph" href="tel:+77081888099">+7 708 188 80 99</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <h1 class="big">Из Аравии<br><span class="o">на вашу</span> полку</h1>
+  <div class="row">
+    <p>Напитки Kinza, саудовские финики и любой товар под заказ. Покупаем у производителя, проверяем своими глазами, везём и растаможиваем. Вам остаётся продавать.</p>
+    <div class="r"><a class="btn" href="#contact">Хочу прайс →</a><a class="btn w" href="#goods">Что везём</a></div>
+  </div>
+</div></section>
+
+<div class="route"><div class="wrap">
+  <div><small>Откуда</small><b>Саудовская Аравия</b></div>
+  <div><small>Куда</small><b>Россия · Казахстан</b></div>
+  <div><small>Кто отвечает</small><b>Мы. Весь путь.</b></div>
+</div></div>
+
+<div class="photo"><img src="/images/kinza-lineup.jpg" alt="Линейка Kinza"></div>
+
+<section class="pain"><div class="wrap">
+  <h2 class="big">Знакомо?</h2>
+  <div class="g">
+    <div><b>«Цена выросла в третий раз»</b><p>Потому что между вами и заводом — три перекупщика, и каждый хочет заработать.</p></div>
+    <div><b>«Привезли не то»</b><p>На фото было одно, на складе — другое. А деньги уже ушли.</p></div>
+    <div><b>«Застряло на таможне»</b><p>Не хватило сертификата, и партия неделями стоит, пока сгорают сроки.</p></div>
+  </div>
+</div></section>
+
+<section class="solve"><div class="wrap">
+  <h2 class="big">Мы это убрали</h2>
+  <div class="g">
+    <div><h3>Напрямую с завода</h3><p>Наша команда в Саудовской Аравии. Никаких цепочек — цена производителя.</p></div>
+    <div><h3>Видео до отгрузки</h3><p>Снимаем вашу партию на складе. Видите то, что приедет.</p></div>
+    <div><h3>Документы на нас</h3><p>Сертификаты, маркировка, таможня — до вашего склада.</p></div>
+  </div>
+</div></section>
+
+<div class="marq" aria-hidden="true"><div>&nbsp;Kinza ✺ Финики Суккари ✺ Импорт под заказ ✺ Без посредников ✺ Kinza ✺ Финики Суккари ✺ Импорт под заказ ✺ Без посредников ✺ Kinza ✺ Финики Суккари ✺ Импорт под заказ ✺ Без посредников ✺ Kinza ✺ Финики Суккари ✺ Импорт под заказ ✺ Без посредников ✺</div></div>
+
+<div class="goods" id="goods">
+  <a href="#contact"><img src="/images/kinza.jpg" alt="Kinza" style="object-position:30% center" loading="lazy"><div class="t"><h3>Kinza</h3><span>↗</span></div><p>Саудовская газировка. Яркие вкусы — заметная полка.</p></a>
+  <a href="#contact"><img src="/images/dates.jpg" alt="Финики" style="object-position:center 50%" loading="lazy"><div class="t"><h3>Финики</h3><span>↗</span></div><p>Суккари и другие сорта. Весовые и подарочные.</p></a>
+  <a href="#contact"><img src="/images/factory.jpg" alt="Производство" loading="lazy"><div class="t"><h3>Под заказ</h3><span>↗</span></div><p>Любой товар из Саудовской Аравии. Найдём и привезём.</p></a>
+</div>
+
+<section class="faq"><div class="wrap">
+  <h2 class="big">Вопросы<br>по делу</h2>
+  <div>
+    <details><summary>Сколько минимум?</summary><p>Зависит от товара. Для первого раза — пробная партия, чтобы проверить спрос.</p></details>
+    <details><summary>Как долго везти?</summary><p>Зависит от объёма и города. Точный срок — вместе с прайсом.</p></details>
+    <details><summary>Документы будут?</summary><p>Да. Сертификаты, маркировка, таможня — всё на нас.</p></details>
+    <details><summary>Привезёте другое?</summary><p>Да. Опишите задачу — найдём производителя в Саудовской Аравии.</p></details>
+    <details><summary>С кем работаете?</summary><p>С юрлицами и ИП в России и Казахстане.</p></details>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2 class="big">Пишите.<br><span class="y">Ответим сегодня.</span></h2>
+  <div class="g">
+    <div>
+      <p>Прайс, сроки и стоимость доставки в ваш город — в WhatsApp в течение рабочего дня. Без спама и навязчивых звонков.</p>
+      <a class="ph" href="tel:+77081888099">+7 708 188 80 99</a>
+      <p style="margin-top:8px;font-size:16px">dosnet2200@gmail.com</p>
+    </div>
+    <form class="lead">
+      <input name="name" placeholder="Имя или компания" required autocomplete="organization">
+      <input name="phone" type="tel" placeholder="Телефон / WhatsApp" required autocomplete="tel">
+      <input name="need" placeholder="Что нужно? Например: Kinza, 2 паллеты">
+      <button class="btn" type="submit">Отправить в WhatsApp →</button>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© Saudi Sukkari</span><span>Саудовская Аравия → Россия · Казахстан</span></div></footer>
+
+<a class="wa" href="https://wa.me/77081888099" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9A11.8 11.8 0 0 0 12.05 0Zm0 21.79a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.88 9.88 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35Z"/></svg></a>
+
+<script>
+document.querySelectorAll('form.lead').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();
+  var t='Здравствуйте! Хочу получить прайс.\nИмя/компания: '+f.name.value.trim()+'\nТелефон: '+f.phone.value.trim()+(f.need.value.trim()?'\nНужно: '+f.need.value.trim():'');
+  window.open('https://wa.me/77081888099?text='+encodeURIComponent(t),'_blank','noopener');});});
+</script>
+</body>
+</html>

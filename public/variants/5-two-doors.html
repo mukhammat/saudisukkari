@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Saudi Sukkari — Вариант 5 · Two Doors</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#13307A;--blue2:#0A1F57;--sand:#E9DCC6;--sand2:#F6F0E6;--brown:#5B3A1E;--ink:#18161A;--muted:#6C6670;--line:#E5DFD6;--acc:#E8A33D}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sand2);color:var(--ink);font:400 16px/1.65 'Manrope',sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.serif{font-family:'Prata',serif;font-weight:400}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;text-decoration:none;font:600 15px 'Manrope';border:0;cursor:pointer;background:var(--ink);color:#fff;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+header{position:absolute;top:0;left:0;right:0;z-index:10;color:#fff}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:84px;max-width:none;padding:0 32px}
+.logo{font-family:'Prata';font-size:22px;text-decoration:none;letter-spacing:.04em}
+header .btn{background:rgba(255,255,255,.14);backdrop-filter:blur(8px);color:#fff;padding:12px 20px;font-size:14px}
+.doors{display:flex;height:100vh;min-height:640px;max-height:980px}
+.door{position:relative;flex:1;overflow:hidden;text-decoration:none;color:#fff;transition:flex .5s cubic-bezier(.2,.7,.2,1);display:flex;align-items:flex-end}
+.door:hover{flex:1.35}
+.door img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.door:hover img{transform:scale(1.04)}
+.door::after{content:"";position:absolute;inset:0}
+.door.k::after{background:linear-gradient(180deg,rgba(10,31,87,.25),rgba(10,31,87,.92))}
+.door.d::after{background:linear-gradient(180deg,rgba(60,35,15,.15),rgba(60,35,15,.88))}
+.door .c{position:relative;z-index:1;padding:48px;max-width:560px}
+.door small{font-size:12px;letter-spacing:.25em;text-transform:uppercase;opacity:.8}
+.door h2{font-family:'Prata';font-weight:400;font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin:12px 0 0}
+.door p{margin:16px 0 0;opacity:.9;font-size:17px}
+.door .go{display:inline-flex;margin-top:24px;padding:14px 22px;border-radius:999px;background:#fff;color:var(--ink);font-weight:600;font-size:15px}
+.door.d .go{background:var(--acc)}
+.center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;background:var(--sand2);color:var(--ink);border-radius:50%;width:170px;height:170px;display:grid;place-items:center;text-align:center;font-family:'Prata';font-size:17px;line-height:1.25;box-shadow:0 20px 50px rgba(0,0,0,.3);pointer-events:none}
+@media(max-width:820px){.doors{flex-direction:column;height:auto;max-height:none}.door{min-height:70vh}.door:hover{flex:1}.center{display:none}.door .c{padding:28px}}
+.intro{padding:120px 0 80px;text-align:center}
+.intro h1{font-family:'Prata';font-weight:400;font-size:clamp(34px,4.8vw,64px);line-height:1.1;margin:0 auto;max-width:980px}
+.intro p{color:var(--muted);font-size:19px;max-width:640px;margin:24px auto 0}
+.who{padding:0 0 120px}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:12px 20px;font:600 15px 'Manrope';cursor:pointer;color:var(--ink)}
+.tabs button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.panel{margin-top:36px;background:#fff;border-radius:32px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;box-shadow:0 30px 80px rgba(24,22,26,.08)}
+@media(max-width:860px){.panel{grid-template-columns:1fr}}
+.panel img{width:100%;height:100%;min-height:360px;object-fit:cover}
+.panel .t{padding:56px}
+@media(max-width:860px){.panel .t{padding:28px}}
+.panel h3{font-family:'Prata';font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.15;margin:0}
+.panel ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px}
+.panel li{display:flex;gap:12px}
+.panel li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--acc);margin-top:9px}
+.panel .btn{margin-top:32px}
+.band{background:var(--blue2);color:#fff;padding:110px 0}
+.band .g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:48px;margin-top:56px}
+.band h2{font-family:'Prata';font-weight:400;font-size:clamp(32px,4vw,54px);line-height:1.1;margin:0;max-width:820px}
+.band .n{font-family:'Prata';font-size:52px;color:var(--acc);line-height:1}
+.band h3{margin:14px 0 6px;font-size:19px}
+.band p{margin:0;color:#B6C2E6}
+.custom{padding:120px 0}
+.custom .g{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+@media(max-width:860px){.custom .g{grid-template-columns:1fr}}
+.custom img{border-radius:28px;aspect-ratio:4/3;object-fit:cover}
+.custom h2{font-family:'Prata';font-weight:400;font-size:clamp(30px,3.8vw,50px);line-height:1.1;margin:0}
+.custom p{color:var(--muted);font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chips span{background:var(--sand);padding:8px 14px;border-radius:999px;font-size:14px}
+.faq{padding:0 0 120px}
+.faq .wrap{max-width:860px}
+.faq h2{font-family:'Prata';font-weight:400;font-size:clamp(30px,3.6vw,46px);text-align:center;margin:0 0 40px}
+details{background:#fff;border-radius:18px;padding:22px 26px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;font-size:17px}
+details p{margin:10px 0 0;color:var(--muted)}
+.contact{background:var(--sand);padding:110px 0}
+.contact .box{background:var(--ink);color:#fff;border-radius:36px;padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:860px){.contact .box{grid-template-columns:1fr;padding:32px}}
+.contact h2{font-family:'Prata';font-weight:400;font-size:clamp(32px,4vw,54px);line-height:1.08;margin:0}
+.contact p{color:#B9B3BC}
+form{display:grid;gap:12px}
+input,select{height:56px;border-radius:16px;border:1px solid #3A363D;background:#242128;color:#fff;padding:0 18px;font:400 16px 'Manrope';outline:none}
+input:focus,select:focus{border-color:var(--acc)}
+input::placeholder{color:#8D8791}
+form .btn{background:var(--acc);color:var(--ink);justify-content:center;height:56px}
+footer{background:var(--sand);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:0 24px 40px}
+.wa{position:fixed;right:22px;bottom:22px;z-index:40;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#">Saudi Sukkari</a><a class="btn" href="#contact">Получить прайс</a></div></header>
+
+<div class="doors" style="position:relative">
+  <a class="door k" href="#who" data-pick="Напитки Kinza">
+    <img src="/images/kinza-lineup.jpg" alt="Напитки Kinza">
+    <div class="c"><small>Дверь №1</small><h2>Напитки Kinza</h2><p>Яркая саудовская газировка, которая выделяет вашу полку и меню.</p><span class="go">Оптовый прайс →</span></div>
+  </a>
+  <a class="door d" href="#who" data-pick="Саудовские финики">
+    <img src="/images/dates.jpg" alt="Саудовские финики" style="object-position:center 50%">
+    <div class="c"><small>Дверь №2</small><h2>Саудовские финики</h2><p>Суккари и другие сорта — к Рамадану, для магазинов и подарочных наборов.</p><span class="go">Оптовый прайс →</span></div>
+  </a>
+  <div class="center">Выберите,<br>что вам<br>интересно</div>
+</div>
+
+<section class="intro"><div class="wrap">
+  <h1>Ваш человек в Саудовской Аравии — от завода до вашего склада</h1>
+  <p>Saudi Sukkari закупает напрямую у производителей, проверяет каждую партию на месте и привозит в Россию и Казахстан с полным пакетом документов.</p>
+</div></section>
+
+<section class="who" id="who"><div class="wrap">
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-t="0">Я — магазин</button>
+    <button role="tab" aria-selected="false" data-t="1">Я — кафе / ресторан</button>
+    <button role="tab" aria-selected="false" data-t="2">Я — дистрибьютор</button>
+    <button role="tab" aria-selected="false" data-t="3">Я собираю подарки</button>
+  </div>
+  <div class="panel">
+    <img id="p-img" src="/images/kinza-lineup.jpg" alt="">
+    <div class="t">
+      <h3 id="p-h"></h3>
+      <ul id="p-l"></ul>
+      <a class="btn" href="#contact" id="p-b"></a>
+    </div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2>Три обещания, которые мы даём каждому клиенту</h2>
+  <div class="g">
+    <div><div class="n">I</div><h3>Без посредников</h3><p>Покупаем у производителя. Не переплачиваете за цепочку перекупщиков.</p></div>
+    <div><div class="n">II</div><h3>Видите до оплаты</h3><p>Фото и видео вашей партии на складе в Саудовской Аравии.</p></div>
+    <div><div class="n">III</div><h3>Готово к продаже</h3><p>Сертификаты, маркировка, таможня — товар приходит с документами.</p></div>
+  </div>
+</div></section>
+
+<section class="custom"><div class="wrap g">
+  <img src="/images/factory.jpg" alt="Производство в Саудовской Аравии" loading="lazy">
+  <div>
+    <h2>Дверь №3: всё остальное</h2>
+    <p>Нужен товар, которого нет в списке? Опишите задачу — найдём производителя в Саудовской Аравии, сравним предложения и привезём под ключ.</p>
+    <div class="chips"><span>Продукты</span><span>Напитки</span><span>Сладости</span><span>Специи</span><span>Упаковка</span><span>Косметика</span></div>
+    <a class="btn" href="#contact" data-pick="Другой товар под заказ" style="margin-top:28px">Описать задачу</a>
+  </div>
+</div></section>
+
+<section class="faq"><div class="wrap">
+  <h2>Частые вопросы</h2>
+  <details><summary>Какая минимальная партия?</summary><p>Зависит от товара. Для первого заказа можно взять пробный объём.</p></details>
+  <details><summary>Какие сроки поставки?</summary><p>Зависят от товара, объёма и города — назовём точный срок вместе с прайсом.</p></details>
+  <details><summary>Есть ли документы?</summary><p>Да. Сертификаты, маркировку и таможенное оформление берём на себя.</p></details>
+  <details><summary>С кем вы работаете?</summary><p>С юрлицами и ИП в России и Казахстане.</p></details>
+  <details><summary>Доставляете в другие города?</summary><p>Да, по России и Казахстану. Условия обсудим под ваш заказ.</p></details>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div class="box">
+    <div>
+      <h2>Получите прайс, собранный под вас</h2>
+      <p>Укажите, что интересует, — пришлём в WhatsApp цены, сроки и стоимость доставки в ваш город. Ответим в течение рабочего дня.</p>
+      <p style="color:#fff;font-size:20px;margin-top:28px"><a href="tel:+77081888099" style="text-decoration:none">+7 708 188 80 99</a></p>
+    </div>
+    <form class="lead">
+      <select name="need" id="need"><option>Напитки Kinza</option><option>Саудовские финики</option><option>Kinza + финики</option><option>Другой товар под заказ</option></select>
+      <select name="who" id="whoSel"><option>Магазин / сеть</option><option>Кафе / ресторан</option><option>Дистрибьютор</option><option>Подарочные наборы</option><option>Другое</option></select>
+      <input name="name" placeholder="Имя или компания" required autocomplete="organization">
+      <input name="phone" type="tel" placeholder="Телефон / WhatsApp" required autocomplete="tel">
+      <button class="btn" type="submit">Получить прайс в WhatsApp</button>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© Saudi Sukkari · Саудовская Аравия → Россия, Казахстан</span><span>dosnet2200@gmail.com</span></div></footer>
+
+<a class="wa" href="https://wa.me/77081888099" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9A11.8 11.8 0 0 0 12.05 0Zm0 21.79a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.88 9.88 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35Z"/></svg></a>
+
+<script>
+(function(){
+  var P=[
+    {img:'/images/kinza-lineup.jpg',h:'Новинка на полке — новые покупатели в магазине',l:['Импортная газировка, которой нет у соседей','Яркие банки работают как реклама прямо на полке','Финики к Рамадану — сезонный пик продаж','Начните с пробной партии и проверьте спрос'],b:'Прайс для магазина →',w:0},
+    {img:'/images/kinza.jpg',h:'Напиток, который гости фотографируют',l:['Необычная газировка в меню — повод вернуться','Финики к кофе и чаю — восточная подача','Стабильные поставки без перебоев','Документы для проверок — в комплекте'],b:'Прайс для HoReCa →',w:1},
+    {img:'/images/factory.jpg',h:'Свежая марка в портфель — напрямую с завода',l:['Закупочная цена без промежуточных звеньев','Объёмы от паллет до контейнеров','Таможня и сертификация на нашей стороне','Один менеджер на весь путь поставки'],b:'Прайс для дистрибьютора →',w:2},
+    {img:'/images/dates.jpg',h:'Финики, за которые не стыдно перед клиентом',l:['Премиальные сорта: Суккари, Аджва, Меджул','Подарочная упаковка или весовые для ваших коробок','Корпоративные наборы к Рамадану и праздникам','Фото партии до отгрузки — знаете, что получите'],b:'Прайс на подарочные →',w:3}
+  ];
+  var tabs=document.querySelectorAll('.tabs button'),img=document.getElementById('p-img'),h=document.getElementById('p-h'),l=document.getElementById('p-l'),b=document.getElementById('p-b'),ws=document.getElementById('whoSel');
+  function set(i){var p=P[i];tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i)});img.src=p.img;h.textContent=p.h;l.innerHTML=p.l.map(function(x){return '<li>'+x+'</li>'}).join('');b.textContent=p.b;b.onclick=function(){ws.selectedIndex=p.w};}
+  tabs.forEach(function(t,k){t.onclick=function(){set(k)}});set(0);
+  document.querySelectorAll('[data-pick]').forEach(function(a){a.addEventListener('click',function(){var n=document.getElementById('need');for(var i=0;i<n.options.length;i++)if(n.options[i].text===a.dataset.pick)n.selectedIndex=i;});});
+  document.querySelectorAll('form.lead').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();
+    var t='Здравствуйте! Хочу получить прайс.\nИнтересует: '+f.need.value+'\nКто я: '+f.who.value+'\nИмя/компания: '+f.name.value.trim()+'\nТелефон: '+f.phone.value.trim();
+    window.open('https://wa.me/77081888099?text='+encodeURIComponent(t),'_blank','noopener');});});
+})();
+</script>
+</body>
+</html>
