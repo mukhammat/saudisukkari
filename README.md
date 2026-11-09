@@ -30,6 +30,7 @@ npm run deploy
 
 Автоматически: Cloudflare → Workers & Pages → Create → Import a repository → выбрать `mukhammat/saudisukkari`.
 Build command: пусто, Deploy command: `npx wrangler deploy`. После этого каждый push в `main` обновляет сайт.
+Проверить, что сборка запустилась: Cloudflare → Workers & Pages → `saudisukkari` → Deployments.
 
 ## Что проверить перед запуском
 
