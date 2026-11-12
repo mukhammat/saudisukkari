@@ -12,6 +12,36 @@
 <meta property="og:image" content="/images/kinza-lineup.jpg">
 <meta property="og:locale" content="ru_RU">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+/* ===== АНАЛИТИКА: впишите номера счётчиков, остальное настроено =====
+   YM_ID — номер счётчика Яндекс Метрики (metrika.yandex.ru → Добавить счётчик), например 98765432
+   GA_ID — идентификатор Google Analytics 4 (analytics.google.com), например G-XXXXXXXXXX
+   Цели (создайте в Метрике как «JavaScript-событие» с этими идентификаторами):
+   quiz_start, quiz_step2, quiz_step3, lead_submit, whatsapp_click, phone_click */
+var YM_ID = '';
+var GA_ID = '';
+(function(){
+  if(YM_ID){
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+    ym(YM_ID,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+  }
+  if(GA_ID){
+    var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',GA_ID);
+  }
+  window.goal=function(name,params){
+    try{if(YM_ID&&window.ym)ym(YM_ID,'reachGoal',name,params||{})}catch(e){}
+    try{if(GA_ID&&window.gtag)gtag('event',name,params||{})}catch(e){}
+  };
+  // Запоминаем источник рекламы (utm, yclid, gclid), чтобы он попал в заявку
+  try{
+    var p=new URLSearchParams(location.search),keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','yclid','gclid'],has=false,o={};
+    keys.forEach(function(k){if(p.get(k)){o[k]=p.get(k);has=true}});
+    if(has){o.referrer=document.referrer;sessionStorage.setItem('ss_src',JSON.stringify(o))}
+    else if(!sessionStorage.getItem('ss_src')){sessionStorage.setItem('ss_src',JSON.stringify({referrer:document.referrer}))}
+  }catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -183,6 +213,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="nav"><button type="button" class="btn out" id="prev" style="display:none">Назад</button><button type="button" class="btn" id="next">Далее →</button></div>
     <div class="gift">📷 Вместе с расчётом — фото и видео товара со склада в Саудовской Аравии</div>
     <small>Расчёт придёт в WhatsApp в течение рабочего дня</small>
+    <small id="consent" style="display:none">Нажимая кнопку, вы соглашаетесь с <a href="/privacy" target="_blank">политикой обработки персональных данных</a></small>
+    <div id="done" style="display:none;margin-top:14px;padding:14px;border-radius:10px;background:var(--gl);color:var(--g2);font-size:15px;text-align:center">Заявка принята. Мы пришлём расчёт в WhatsApp в течение рабочего дня.</div>
   </form>
 </div></div>
 
@@ -263,21 +295,35 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 </div></section>
 </main>
 
-<footer><div class="wrap"><span>© Saudi Sukkari · Саудовская Аравия · Россия · Казахстан</span><span>+7 708 188 80 99 · dosnet2200@gmail.com</span></div></footer>
+<footer><div class="wrap"><span>© Saudi Sukkari · Саудовская Аравия · Россия · Казахстан</span><span>+7 708 188 80 99 · dosnet2200@gmail.com · <a href="/privacy">Политика конфиденциальности</a></span></div></footer>
 
 <a class="wa" href="https://wa.me/77081888099" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9A11.8 11.8 0 0 0 12.05 0Zm0 21.79a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.88 9.88 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35Z"/></svg></a>
 
 <script>
 (function(){
   var f=document.getElementById('quiz'),qs=f.querySelectorAll('.q'),i=0,next=document.getElementById('next'),prev=document.getElementById('prev'),bar=document.getElementById('bar');
-  function show(){qs.forEach(function(q,k){q.classList.toggle('on',k===i)});bar.style.width=((i+1)/qs.length*100)+'%';prev.style.display=i?'':'none';next.textContent=i===qs.length-1?'Получить расчёт':'Далее →';}
+  var consent=document.getElementById('consent'),done=document.getElementById('done'),started=false,sent=false;
+  function show(){qs.forEach(function(q,k){q.classList.toggle('on',k===i)});bar.style.width=((i+1)/qs.length*100)+'%';prev.style.display=i?'':'none';next.textContent=i===qs.length-1?'Получить расчёт':'Далее →';consent.style.display=i===qs.length-1?'':'none';}
+  f.addEventListener('change',function(){if(!started){started=true;goal('quiz_start')}});
   prev.onclick=function(){i=Math.max(0,i-1);show()};
   next.onclick=function(){
-    if(i<qs.length-1){i++;show();return}
-    if(!f.name.value.trim()||!f.phone.value.trim()){(f.name.value.trim()?f.phone:f.name).focus();return}
-    var t='Здравствуйте! Хочу расчёт поставки.\nТовар: '+f.need.value+'\nОбъём: '+f.vol.value+'\nИмя/компания: '+f.name.value.trim()+'\nТелефон: '+f.phone.value.trim()+(f.city.value.trim()?'\nГород: '+f.city.value.trim():'');
+    if(i<qs.length-1){if(!started){started=true;goal('quiz_start')}i++;goal('quiz_step'+(i+1));show();return}
+    if(!f.name.value.trim()||f.phone.value.replace(/\D/g,'').length<6){(f.name.value.trim()?f.phone:f.name).focus();return}
+    var lead={need:f.need.value,vol:f.vol.value,name:f.name.value.trim(),phone:f.phone.value.trim(),city:f.city.value.trim(),page:location.pathname};
+    try{var src=JSON.parse(sessionStorage.getItem('ss_src')||'{}');for(var k in src)lead[k]=src[k]}catch(e){}
+    if(!sent){
+      sent=true;goal('lead_submit',{need:lead.need,vol:lead.vol});
+      try{fetch('/api/lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(lead),keepalive:true}).catch(function(){})}catch(e){}
+    }
+    done.style.display='';
+    var t='Здравствуйте! Хочу расчёт поставки.\nТовар: '+lead.need+'\nОбъём: '+lead.vol+'\nИмя/компания: '+lead.name+'\nТелефон: '+lead.phone+(lead.city?'\nГород: '+lead.city:'');
     window.open('https://wa.me/77081888099?text='+encodeURIComponent(t),'_blank','noopener');
   };
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a');if(!a)return;
+    if(a.href.indexOf('wa.me')>-1)goal('whatsapp_click');
+    else if(a.href.indexOf('tel:')===0)goal('phone_click');
+  });
   f.addEventListener('submit',function(e){e.preventDefault();next.click()});
   show();
 })();

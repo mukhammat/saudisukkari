@@ -1,8 +1,18 @@
 {
   "name": "saudisukkari",
+  "main": "src/worker.js",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "single-page-application"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  // Заявки из квиза. Смотреть: Cloudflare → Storage & Databases → KV → saudisukkari-leads
+  "kv_namespaces": [
+    { "binding": "LEADS", "id": "0e55caa4e1db403ba3f9e1b692eec373" }
+  ]
+  // Уведомления в Telegram (необязательно): задать секреты
+  //   npx wrangler secret put TG_BOT_TOKEN
+  //   npx wrangler secret put TG_CHAT_ID
 }

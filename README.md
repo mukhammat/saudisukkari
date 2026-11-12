@@ -32,6 +32,14 @@ npm run deploy
 Build command: пусто, Deploy command: `npx wrangler deploy`. После этого каждый push в `main` обновляет сайт.
 Проверить, что сборка запустилась: Cloudflare → Workers & Pages → `saudisukkari` → Deployments.
 
+## Заявки и аналитика
+
+- Заявки из квиза сохраняются в Cloudflare KV: Storage & Databases → KV → `saudisukkari-leads`. Параллельно, как и раньше, открывается WhatsApp с готовым текстом.
+- Уведомления в Telegram: создать бота у @BotFather, затем `npx wrangler secret put TG_BOT_TOKEN` и `npx wrangler secret put TG_CHAT_ID`.
+- В заявку попадает источник: utm-метки, yclid (Директ), gclid (Google Ads).
+- Яндекс Метрика и Google Analytics: вписать `YM_ID` и `GA_ID` в начале `public/index.html`. Цели (JavaScript-событие): `quiz_start`, `quiz_step2`, `quiz_step3`, `lead_submit`, `whatsapp_click`, `phone_click`.
+- Политика обработки персональных данных: `public/privacy.html` (адрес `/privacy`). Добавить в неё юрлицо (название и ИНН/БИН).
+
 ## Что проверить перед запуском
 
 - Реальные факты вместо общих фраз: годы работы, число поставок, города (блок под списком на первом экране).
