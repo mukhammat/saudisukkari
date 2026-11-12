@@ -6,7 +6,7 @@
     "directory": "./public",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
-    "run_worker_first": ["/api/*"]
+    "run_worker_first": ["/api/*", "/kinza", "/kinza/", "/kinza.html"]
   },
   // Заявки из квиза. Смотреть: Cloudflare → Storage & Databases → KV → saudisukkari-leads
   "kv_namespaces": [

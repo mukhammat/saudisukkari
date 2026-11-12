@@ -53,6 +53,9 @@ async function handleLead(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/kinza' || url.pathname === '/kinza/' || url.pathname === '/kinza.html') {
+      return Response.redirect(`${url.origin}/sukkari-drinks${url.search}${url.hash}`, 301);
+    }
     if (url.pathname === '/api/lead') {
       if (request.method !== 'POST') return new Response('Method not allowed', { status: 405 });
       return handleLead(request, env);
