@@ -12,36 +12,7 @@
 <meta property="og:image" content="/images/kinza-lineup.jpg">
 <meta property="og:locale" content="ru_RU">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script>
-/* ===== АНАЛИТИКА: впишите номера счётчиков, остальное настроено =====
-   YM_ID — номер счётчика Яндекс Метрики (metrika.yandex.ru → Добавить счётчик), например 98765432
-   GA_ID — идентификатор Google Analytics 4 (analytics.google.com), например G-XXXXXXXXXX
-   Цели (создайте в Метрике как «JavaScript-событие» с этими идентификаторами):
-   quiz_start, quiz_step2, quiz_step3, lead_submit, whatsapp_click, phone_click */
-var YM_ID = '';
-var GA_ID = '';
-(function(){
-  if(YM_ID){
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
-    ym(YM_ID,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
-  }
-  if(GA_ID){
-    var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;document.head.appendChild(s);
-    window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',GA_ID);
-  }
-  window.goal=function(name,params){
-    try{if(YM_ID&&window.ym)ym(YM_ID,'reachGoal',name,params||{})}catch(e){}
-    try{if(GA_ID&&window.gtag)gtag('event',name,params||{})}catch(e){}
-  };
-  // Запоминаем источник рекламы (utm, yclid, gclid), чтобы он попал в заявку
-  try{
-    var p=new URLSearchParams(location.search),keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','yclid','gclid'],has=false,o={};
-    keys.forEach(function(k){if(p.get(k)){o[k]=p.get(k);has=true}});
-    if(has){o.referrer=document.referrer;sessionStorage.setItem('ss_src',JSON.stringify(o))}
-    else if(!sessionStorage.getItem('ss_src')){sessionStorage.setItem('ss_src',JSON.stringify({referrer:document.referrer}))}
-  }catch(e){}
-})();
-</script>
+<script src="/js/analytics.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -247,7 +218,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <span class="tag">Товары</span>
   <h2 class="h2">Что везём прямо сейчас</h2>
   <div class="prod">
-    <article><img src="/images/kinza-lineup.jpg" alt="Kinza" loading="lazy"><div class="b"><h3>Напитки Kinza</h3><p>Популярная саудовская газировка. Яркая линейка вкусов для розницы и HoReCa.</p><div class="meta"><span>Кола</span><span>Апельсин</span><span>Лимон</span><span>Цитрус</span><span>Diet</span></div><a class="btn" href="#quiz">Рассчитать</a></div></article>
+    <article><img src="/images/kinza-lineup.jpg" alt="Kinza" loading="lazy"><div class="b"><h3>Напитки Kinza</h3><p>Популярная саудовская газировка. Яркая линейка вкусов для розницы и HoReCa.</p><div class="meta"><span>Кола</span><span>Апельсин</span><span>Лимон</span><span>Цитрус</span><span>Diet</span></div><a class="btn" href="/kinza">Kinza со склада →</a></div></article>
     <article><img src="/images/dates.jpg" alt="Финики" loading="lazy" style="object-position:center 55%"><div class="b"><h3>Саудовские финики</h3><p>Суккари и другие сорта. Весовые и в подарочной упаковке, к сезону Рамадана.</p><div class="meta"><span>Суккари</span><span>Аджва</span><span>Сафави</span><span>Подарочные</span></div><a class="btn" href="#quiz">Рассчитать</a></div></article>
     <article><img src="/images/factory.jpg" alt="Производство" loading="lazy"><div class="b"><h3>Под заказ</h3><p>Продукты, напитки, сладости, упаковка — найдём производителя и сравним предложения.</p><div class="meta"><span>Поиск завода</span><span>Проверка</span><span>Логистика</span></div><a class="btn" href="#quiz">Оставить запрос</a></div></article>
   </div>

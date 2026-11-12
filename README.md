@@ -7,6 +7,7 @@
 ```
 public/
   index.html      — главная страница (вариант «Trade Direct» с квизом)
+  kinza.html      — посадочная под рекламу Kinza (/kinza), «в наличии на складе»
   variants/       — 5 вариантов дизайна для сравнения (/variants/, закрыты от поисковиков)
   images/         — фото (Kinza, финики, производство)
 wrangler.jsonc    — настройки Cloudflare Workers
@@ -37,7 +38,7 @@ Build command: пусто, Deploy command: `npx wrangler deploy`. После э�
 - Заявки из квиза сохраняются в Cloudflare KV: Storage & Databases → KV → `saudisukkari-leads`. Параллельно, как и раньше, открывается WhatsApp с готовым текстом.
 - Уведомления в Telegram: создать бота у @BotFather, затем `npx wrangler secret put TG_BOT_TOKEN` и `npx wrangler secret put TG_CHAT_ID`.
 - В заявку попадает источник: utm-метки, yclid (Директ), gclid (Google Ads).
-- Яндекс Метрика и Google Analytics: вписать `YM_ID` и `GA_ID` в начале `public/index.html`. Цели (JavaScript-событие): `quiz_start`, `quiz_step2`, `quiz_step3`, `lead_submit`, `whatsapp_click`, `phone_click`.
+- Яндекс Метрика и Google Analytics: вписать `YM_ID` и `GA_ID` в `public/js/analytics.js` (общий для всех страниц). Цели (JavaScript-событие): `quiz_start`, `quiz_step2`, `quiz_step3`, `lead_submit`, `whatsapp_click`, `phone_click`.
 - Политика обработки персональных данных: `public/privacy.html` (адрес `/privacy`).
 
 ## Что проверить перед запуском
