@@ -140,15 +140,18 @@ section{padding:88px 0}.soft{background:var(--soft)}
 
 /* ===== 3D-банка при прокрутке ===== */
 .flv{padding:0}
-.flv-track{display:none;height:calc(100vh + 370vh);height:calc(100svh + 370svh)}
+.flv-track{display:none;height:calc(100vh + 280vh);height:calc(100svh + 280svh)}
 .flv.on3d .flv-track{display:block}
 .flv.on3d .flv-fallback{display:none}
 .flv-fallback{padding:88px 0}
 .flv-stage{position:sticky;top:var(--hh,72px);height:calc(100vh - var(--hh,72px));height:calc(100svh - var(--hh,72px));overflow:hidden;display:flex;align-items:center;background:radial-gradient(60% 75% at 72% 52%,rgba(var(--fc,230,57,70),.20),transparent 72%),#fff}
 .flv-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;position:relative;z-index:1;width:100%}
-.flv-can{position:relative;height:min(76vh,660px);height:min(76svh,660px)}
-.flv-can canvas{width:100%;height:100%;display:block}
-.flv-can::after{content:"";position:absolute;left:50%;bottom:4%;width:44%;height:5%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(15,26,20,.26),transparent);filter:blur(5px);z-index:-1}
+.flv-can{position:relative;height:min(76vh,660px);height:min(76svh,660px);perspective:1500px}
+.flv-deck{position:absolute;inset:0;transform-style:preserve-3d}
+.flv-card{position:absolute;left:50%;top:50%;height:94%;aspect-ratio:3/4;margin:0;border-radius:26px;overflow:hidden;background:#eee;box-shadow:0 34px 60px -24px rgba(15,26,20,.45),0 8px 18px -8px rgba(15,26,20,.25);backface-visibility:hidden;will-change:transform,opacity;transform:translate(-50%,-50%);opacity:0}
+.flv-card:first-child{opacity:1}
+.flv-card img{width:100%;height:100%;object-fit:cover;display:block}
+.flv-card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.28),transparent 38%);opacity:var(--gl,0);pointer-events:none}
 .flv-name{margin:22px 0 4px;min-height:96px}
 .flv-name b{display:block;font-size:clamp(40px,6.4vw,84px);line-height:1;letter-spacing:-.03em;color:rgb(var(--fd,214,40,57))}
 .flv-name span{display:block;margin-top:8px;font-size:20px;color:var(--muted)}
@@ -158,7 +161,6 @@ section{padding:88px 0}.soft{background:var(--soft)}
 .flv-dots i{width:26px;height:6px;border-radius:99px;background:#DDE3DF;transition:all .3s}
 .flv-dots i.on{width:46px;background:rgb(var(--fd,214,40,57))}
 .flv-meta{color:var(--muted);font-size:15px;margin:0 0 20px}
-.flv-note{position:absolute;left:0;right:0;bottom:10px;margin:0;text-align:center;font-size:12px;color:#8A968F;z-index:1}
 .bubbles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .bubbles i{position:absolute;bottom:-40px;width:var(--s);height:var(--s);border-radius:50%;border:1.5px solid rgba(var(--fc,230,57,70),.35);background:rgba(255,255,255,.5);animation:rise var(--d) linear var(--l) infinite}
 @keyframes rise{to{transform:translateY(-110vh) translateX(18px);opacity:0}}
@@ -171,7 +173,6 @@ section{padding:88px 0}.soft{background:var(--soft)}
   .flv .h2{font-size:24px;margin-top:8px}
   .flv-dots{margin:10px 0}
   .flv-meta{font-size:13px;margin-bottom:12px}
-  .flv-note{bottom:4px}
 }
 @media(prefers-reduced-motion:reduce){.bubbles i{animation:none}}
 </style>
@@ -260,13 +261,18 @@ section{padding:88px 0}.soft{background:var(--soft)}
         <span class="tag">Вкусы</span>
         <h2 class="h2">8 вкусов в наличии</h2>
         <div class="flv-name" id="flvName" aria-live="polite"><b>Cola</b><span>Классический вкус</span></div>
-        <div class="flv-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="flv-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
         <p class="flv-meta">Банка 320 мл · блок 24 шт. Можно собрать ассорти из разных вкусов.</p>
         <a class="btn" href="#quiz">Узнать оптовую цену</a>
       </div>
-      <div class="flv-can"><canvas id="flvCanvas" aria-label="Банка напитка: вращается при прокрутке"></canvas></div>
+      <div class="flv-can"><div class="flv-deck" id="flvDeck">
+        <figure class="flv-card"><img src="/images/kinza-cola.webp" alt="Kinza Cola" width="900" height="1200" loading="lazy" decoding="async"></figure>
+        <figure class="flv-card"><img src="/images/kinza-orange.webp" alt="Kinza Orange" width="900" height="1200" loading="lazy" decoding="async"></figure>
+        <figure class="flv-card"><img src="/images/kinza-lemon.webp" alt="Kinza Lemon" width="900" height="1200" loading="lazy" decoding="async"></figure>
+        <figure class="flv-card"><img src="/images/kinza-pomegranate.webp" alt="Kinza Pomegranate" width="900" height="1200" loading="lazy" decoding="async"></figure>
+        <figure class="flv-card"><img src="/images/kinza-range.webp" alt="Линейка напитков Kinza" width="900" height="1200" loading="lazy" decoding="async"></figure>
+      </div></div>
     </div>
-    <p class="flv-note">Иллюстрация. Фото реальных банок пришлём вместе с ценой.</p>
   </div></div>
 </section>
 
@@ -337,10 +343,10 @@ section{padding:88px 0}.soft{background:var(--soft)}
 <script>
 (function(){
   var sec=document.getElementById('flavors'); if(!sec||!sec.querySelector('.flv-track')) return;
-  var track=sec.querySelector('.flv-track'), stage=sec.querySelector('.flv-stage'), canvas=document.getElementById('flvCanvas');
-  var weak=navigator.deviceMemory&&navigator.deviceMemory<=2;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches||weak||!window.IntersectionObserver) return;
-  var T=[['Cola','Классический вкус'],['Diet Cola','Без сахара'],['Lemon','Освежающий лимон'],['Lemon Zero','Лимон без сахара'],['Orange','Сочный апельсин'],['Pomegranate','Гранат'],['Ещё 2 вкуса','Остальные пришлём вместе с ценой']];
+  var track=sec.querySelector('.flv-track'), stage=sec.querySelector('.flv-stage'), cards=sec.querySelectorAll('.flv-card'), deck=document.getElementById('flvDeck');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!window.IntersectionObserver||!window.requestAnimationFrame) return;
+  // [название, подпись, цвет фона, тёмный цвет текста]
+  var T=[['Cola','Классический вкус','40,62,190','28,42,140'],['Orange','Сочный апельсин','255,160,51','214,92,16'],['Lemon','Освежающий лимон','46,160,67','24,122,52'],['Pomegranate','Гранат','200,24,94','176,20,82'],['Ещё 4 вкуса','Diet Cola, Lemon Zero и другие — список пришлём с ценой','40,62,190','28,42,140']];
   var nameEl=document.getElementById('flvName'), dots=sec.querySelectorAll('.flv-dots i'), hdr=document.querySelector('header'), cur=-1;
   function setHH(){stage.style.setProperty('--hh',(hdr?hdr.offsetHeight:72)+'px')}
   setHH(); addEventListener('resize',setHH);
@@ -355,14 +361,41 @@ section{padding:88px 0}.soft{background:var(--soft)}
     setTimeout(function(){nameEl.firstChild.textContent=T[i][0];nameEl.lastChild.textContent=T[i][1];nameEl.classList.remove('sw')},180);
   }
   function setColor(tint,dk){stage.style.setProperty('--fc',tint);stage.style.setProperty('--fd',dk)}
-  var started=false;
+  function mixRgb(a,b,t){a=a.split(',');b=b.split(',');return a.map(function(v,i){return Math.round(+v+(b[i]-v)*t)}).join(',')}
+  function clamp(v,a,b){return Math.min(b,Math.max(a,v))}
+
+  // 3D-перелистывание фото банок при прокрутке: карточка замирает на вкусе, затем поворачивается и уходит
+  var N=cards.length, HOLD=0.55, lastKey='', lastIdx=-1, raf=0, visible=false, t0=performance.now();
+  var mx=0,my=0,tx=0,ty=0;
+  addEventListener('pointermove',function(e){tx=(e.clientX/innerWidth-.5)*2;ty=(e.clientY/innerHeight-.5)*2},{passive:true});
+  function frame(now){
+    raf=0; if(!visible||document.hidden) return;
+    var t=(now-t0)/1000, s=progress()*(N-1+HOLD), i0, mix;
+    if(s>=N-1){i0=N-1;mix=0}else{i0=Math.floor(s);var m=clamp((s-i0-HOLD)/(1-HOLD),0,1);mix=m*m*(3-2*m)}
+    var i1=Math.min(i0+1,N-1), pos=i0+mix;
+    for(var k=0;k<N;k++){
+      var d=k-pos, a=Math.abs(d), c=cards[k];
+      if(a>1.2){c.style.opacity=0;c.style.visibility='hidden';continue}
+      c.style.visibility='';
+      c.style.opacity=clamp(1.3-a*1.3,0,1);
+      c.style.zIndex=10-Math.round(a*10);
+      c.style.transform='translate(-50%,-50%) translateX('+(d*38)+'%) translateZ('+(-a*320)+'px) rotateY('+(-d*62)+'deg) rotateZ('+(-d*4)+'deg)';
+      c.style.setProperty('--gl',(0.35+0.65*(1-a)).toFixed(2));
+    }
+    mx+=(tx-mx)*.06; my+=(ty-my)*.06;
+    deck.style.transform='translateY('+(Math.sin(t*1.2)*7).toFixed(1)+'px) rotateY('+(mx*7).toFixed(2)+'deg) rotateX('+(-my*5).toFixed(2)+'deg)';
+    var key=i0+':'+Math.round(mix*40);
+    if(key!==lastKey){lastKey=key;setColor(mixRgb(T[i0][2],T[i1][2],mix),mixRgb(T[i0][3],T[i1][3],mix))}
+    var idx=mix>=.5?i1:i0; if(idx!==lastIdx){lastIdx=idx;setFlavor(idx)}
+    raf=requestAnimationFrame(frame);
+  }
+  function kick(){if(!raf)raf=requestAnimationFrame(frame)}
+  sec.classList.add('on3d');
   var io=new IntersectionObserver(function(es){
-    if(!es[0].isIntersecting||started) return; started=true; io.disconnect();
-    import('/js/can3d.js').then(function(m){
-      return Promise.resolve(m.init(canvas,{getProgress:progress,onFlavor:setFlavor,onColor:setColor}));
-    }).then(function(api){ if(api) sec.classList.add('on3d'); }).catch(function(){});
-  },{rootMargin:'900px 0px'});
+    visible=es[0].isIntersecting; if(visible) kick();
+  },{rootMargin:'300px 0px'});
   io.observe(sec);
+  document.addEventListener('visibilitychange',kick);
 })();
 </script>
 </body>
