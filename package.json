@@ -3,9 +3,12 @@
   "private": true,
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "build:3d": "esbuild web/can3d.src.js --bundle --minify --format=esm --target=es2020 --legal-comments=none --outfile=public/js/can3d.js"
   },
   "devDependencies": {
+    "esbuild": "^0.28.2",
+    "three": "^0.187.0",
     "wrangler": "^4"
   }
 }
