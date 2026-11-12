@@ -7,7 +7,7 @@
 ```
 public/
   index.html      — главная страница (вариант «Trade Direct» с квизом)
-  sukkari-drinks.html — посадочная Sukkari Drinks (/sukkari-drinks; /kinza перенаправляет сюда), «в наличии на складе»
+  sukkari-drinks.html — посадочная Sukkari Drinks (/sukkari-drinks), «в наличии на складе»
   variants/       — 5 вариантов дизайна для сравнения (/variants/, закрыты от поисковиков)
   images/         — фото (Kinza, финики, производство)
 wrangler.jsonc    — настройки Cloudflare Workers
