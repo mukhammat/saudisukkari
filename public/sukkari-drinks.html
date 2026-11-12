@@ -140,7 +140,7 @@ section{padding:88px 0}.soft{background:var(--soft)}
 
 /* ===== 3D-банка при прокрутке ===== */
 .flv{padding:0}
-.flv-track{display:none;height:calc(100vh + 280vh);height:calc(100svh + 280svh)}
+.flv-track{display:none;height:calc(100vh + 400vh);height:calc(100svh + 400svh)}
 .flv.on3d .flv-track{display:block}
 .flv.on3d .flv-fallback{display:none}
 .flv-fallback{padding:88px 0}
@@ -261,14 +261,16 @@ section{padding:88px 0}.soft{background:var(--soft)}
         <span class="tag">Вкусы</span>
         <h2 class="h2">8 вкусов в наличии</h2>
         <div class="flv-name" id="flvName" aria-live="polite"><b>Cola</b><span>Классический вкус</span></div>
-        <div class="flv-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+        <div class="flv-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <p class="flv-meta">Банка 320 мл · блок 24 шт. Можно собрать ассорти из разных вкусов.</p>
         <a class="btn" href="#quiz">Узнать оптовую цену</a>
       </div>
       <div class="flv-can"><div class="flv-deck" id="flvDeck">
         <figure class="flv-card"><img src="/images/kinza-cola.webp" alt="Kinza Cola" width="900" height="1200" loading="lazy" decoding="async"></figure>
-        <figure class="flv-card"><img src="/images/kinza-orange.webp" alt="Kinza Orange" width="900" height="1200" loading="lazy" decoding="async"></figure>
+        <figure class="flv-card"><img src="/images/kinza-diet-cola.webp" alt="Kinza Diet Cola" width="900" height="1200" loading="lazy" decoding="async"></figure>
         <figure class="flv-card"><img src="/images/kinza-lemon.webp" alt="Kinza Lemon" width="900" height="1200" loading="lazy" decoding="async"></figure>
+        <figure class="flv-card"><img src="/images/kinza-lemon-zero.webp" alt="Kinza Lemon Zero Sugar" width="900" height="1200" loading="lazy" decoding="async"></figure>
+        <figure class="flv-card"><img src="/images/kinza-orange.webp" alt="Kinza Orange" width="900" height="1200" loading="lazy" decoding="async"></figure>
         <figure class="flv-card"><img src="/images/kinza-pomegranate.webp" alt="Kinza Pomegranate" width="900" height="1200" loading="lazy" decoding="async"></figure>
         <figure class="flv-card"><img src="/images/kinza-range.webp" alt="Линейка напитков Kinza" width="900" height="1200" loading="lazy" decoding="async"></figure>
       </div></div>
@@ -346,7 +348,7 @@ section{padding:88px 0}.soft{background:var(--soft)}
   var track=sec.querySelector('.flv-track'), stage=sec.querySelector('.flv-stage'), cards=sec.querySelectorAll('.flv-card'), deck=document.getElementById('flvDeck');
   if(matchMedia('(prefers-reduced-motion: reduce)').matches||!window.IntersectionObserver||!window.requestAnimationFrame) return;
   // [название, подпись, цвет фона, тёмный цвет текста]
-  var T=[['Cola','Классический вкус','40,62,190','28,42,140'],['Orange','Сочный апельсин','255,160,51','214,92,16'],['Lemon','Освежающий лимон','46,160,67','24,122,52'],['Pomegranate','Гранат','200,24,94','176,20,82'],['Ещё 4 вкуса','Diet Cola, Lemon Zero и другие — список пришлём с ценой','40,62,190','28,42,140']];
+  var T=[['Cola','Классический вкус','40,62,190','28,42,140'],['Diet Cola','Без сахара','74,81,99','52,58,74'],['Lemon','Освежающий лимон','46,160,67','24,122,52'],['Lemon Zero','Лимон без сахара','134,199,67','42,120,60'],['Orange','Сочный апельсин','255,160,51','214,92,16'],['Pomegranate','Гранат','200,24,94','176,20,82'],['Ещё 2 вкуса','Остальные пришлём вместе с ценой','40,62,190','28,42,140']];
   var nameEl=document.getElementById('flvName'), dots=sec.querySelectorAll('.flv-dots i'), hdr=document.querySelector('header'), cur=-1;
   function setHH(){stage.style.setProperty('--hh',(hdr?hdr.offsetHeight:72)+'px')}
   setHH(); addEventListener('resize',setHH);
