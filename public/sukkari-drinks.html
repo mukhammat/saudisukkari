@@ -371,7 +371,7 @@ section{padding:88px 0}.soft{background:var(--soft)}
 
   // 3D-перелистывание фото банок при прокрутке. На каждом кадре меняются только transform и opacity —
   // их браузер считает на видеокарте, без перерисовки страницы. Пишем в DOM только когда что-то сдвинулось.
-  var N=cards.length, HOLD=0.4, lastIdx=-1, raf=0, visible=false, cur=-1;
+  var N=cards.length, lastIdx=-1, raf=0, visible=false, cur=-1;
   var glows=[];
   for(var g=0;g<N;g++){var el=document.createElement('div');el.className='flv-glow';el.style.background='radial-gradient(60% 75% at 72% 52%,rgba('+T[g][2]+',.22),transparent 72%)';stage.insertBefore(el,stage.firstChild);glows.push(el)}
   var prev=new Array(N);
@@ -381,12 +381,9 @@ section{padding:88px 0}.soft{background:var(--soft)}
       deck.style.transform='rotateY('+((e.clientX/innerWidth-.5)*12).toFixed(1)+'deg) rotateX('+((.5-e.clientY/innerHeight)*8).toFixed(1)+'deg)';
     },{passive:true});
   }
-  function target(){
-    var s=progress()*(N-1+HOLD);
-    if(s>=N-1) return N-1;
-    var i0=Math.floor(s), m=clamp((s-i0-HOLD)/(1-HOLD),0,1);
-    return i0+m*m*(3-2*m);
-  }
+  // Прокрутка только выбирает вкус (равные отрезки трека), а сама смена — анимация по времени.
+  // Так карточки никогда не замирают на середине перехода, даже если палец остановился.
+  function target(){ return Math.min(N-1,Math.floor(progress()*N)); }
   function render(pos){
     for(var k=0;k<N;k++){
       var d=k-pos, a=Math.abs(d), c=cards[k], op=a>=1?0:Math.min(1,1.3-a*1.3);
@@ -401,14 +398,16 @@ section{padding:88px 0}.soft{background:var(--soft)}
     var idx=Math.round(pos);
     if(idx!==lastIdx){lastIdx=idx;setFlavor(idx);setColor(T[idx][2],T[idx][3])}
   }
-  function frame(){
+  var lastT=0;
+  function frame(now){
     raf=0; if(!visible||document.hidden) return;
     var t=target();
-    // лёгкая инерция: догоняем прокрутку за ~5 кадров, без рывков на быстром скролле
-    cur=cur<0?t:cur+(t-cur)*0.28;
-    if(Math.abs(t-cur)<0.002) cur=t;
+    // плавный доворот к выбранному вкусу (~0,35 с), не зависит от того, листают ли дальше
+    var dt=Math.min(64,now-(lastT||now)); lastT=now;
+    cur=cur<0?t:cur+(t-cur)*(1-Math.pow(1-0.2,dt/16.7));
+    if(Math.abs(t-cur)<0.004) cur=t;
     render(cur);
-    if(cur!==t) raf=requestAnimationFrame(frame);
+    if(cur!==t) raf=requestAnimationFrame(frame); else lastT=0;
   }
   function kick(){if(!raf)raf=requestAnimationFrame(frame)}
   sec.classList.add('on3d');
