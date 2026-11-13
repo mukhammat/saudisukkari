@@ -160,13 +160,13 @@ section{padding:88px 0}.soft{background:var(--soft)}
 .flv-name span{display:block;margin-top:8px;font-size:20px;color:var(--muted)}
 .flv-name b,.flv-name span{transition:opacity .22s,transform .22s}
 .flv-name.sw b,.flv-name.sw span{opacity:0;transform:translateY(10px)}
-.flv-dots{display:flex;gap:8px;margin:18px 0 8px}
+.flv-dots{display:flex;gap:8px;margin:18px 0 14px}
 .flv-dots i{width:26px;height:6px;border-radius:99px;background:#DDE3DF;transition:all .3s}
 .flv-dots i.on{width:46px;background:rgb(var(--fd,214,40,57))}
-.flv-hint{font-size:14px;font-weight:600;color:rgb(var(--fd,214,40,57));margin:0 0 12px;transition:opacity .4s}
-.flv-hint b{display:inline-block;animation:flvHint 1.2s ease-in-out infinite}
-@keyframes flvHint{50%{transform:translateY(4px)}}
-.flv.moved .flv-hint{opacity:0}
+.flv-act{display:inline-flex;flex-direction:column;align-items:center;gap:20px}
+.flv-hint{width:42px;height:42px;border-radius:50%;background:#fff;box-shadow:0 6px 18px rgba(15,26,20,.14);display:grid;place-items:center;color:rgb(var(--fd,214,40,57));transition:opacity .4s;animation:flvHint 1.4s ease-in-out infinite}
+@keyframes flvHint{50%{transform:translateY(6px)}}
+.flv.moved .flv-hint{opacity:0;pointer-events:none}
 .flv-meta{color:var(--muted);font-size:15px;margin:0 0 20px}
 .bubbles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .bubbles i{position:absolute;bottom:-40px;width:var(--s);height:var(--s);border-radius:50%;border:1.5px solid rgba(var(--fc,230,57,70),.35);background:rgba(255,255,255,.5);animation:rise var(--d) linear var(--l) infinite}
@@ -178,11 +178,12 @@ section{padding:88px 0}.soft{background:var(--soft)}
   .flv-name b{font-size:clamp(34px,11vw,52px)}
   .flv-name span{font-size:16px;margin-top:4px}
   .flv .h2{font-size:24px;margin-top:8px}
-  .flv-dots{margin:10px 0 6px}
-  .flv-hint{font-size:13px;margin-bottom:8px}
+  .flv-dots{margin:10px 0}
+  .flv-act{flex-direction:row;align-items:center;gap:14px}
+  .flv-hint{width:38px;height:38px}
   .flv-meta{font-size:13px;margin-bottom:12px}
 }
-@media(prefers-reduced-motion:reduce){.bubbles i,.flv-float,.flv-hint b{animation:none}}
+@media(prefers-reduced-motion:reduce){.bubbles i,.flv-float,.flv-hint{animation:none}}
 footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:16px;font-weight:600;color:var(--ink)}footer .fl a{text-decoration:none}
 </style>
 </head>
@@ -272,9 +273,9 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:16px;font-weig
         <h2 class="h2">8 вкусов в наличии</h2>
         <div class="flv-name" id="flvName" aria-live="polite"><b>Cola</b><span>Классический вкус</span></div>
         <div class="flv-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="flv-hint" aria-hidden="true">Листайте вниз <b>↓</b></div>
         <p class="flv-meta">Банка 320 мл · блок 24 шт. Можно собрать ассорти из разных вкусов.</p>
-        <a class="btn" href="#quiz">Узнать оптовую цену</a>
+        <div class="flv-act"><a class="btn" href="#quiz">Узнать оптовую цену</a>
+        <div class="flv-hint" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div></div>
       </div>
       <div class="flv-can">
         <div class="flv-float"><div class="flv-deck" id="flvDeck">
