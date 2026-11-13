@@ -165,9 +165,9 @@ section{padding:88px 0}.soft{background:var(--soft)}
 .flv-dots{display:flex;flex-direction:column;gap:7px}
 .flv-dots i{width:6px;height:20px;border-radius:99px;background:#C9D2CD;transition:all .3s}
 .flv-dots i.on{height:40px;background:rgb(var(--fd,214,40,57))}
-.flv-hint{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:600;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.06em;transition:opacity .4s}
-.flv-hint b{width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-135deg);margin-top:6px;animation:flvHint 1.4s ease-in-out infinite}
-@keyframes flvHint{50%{transform:rotate(-135deg) translate(-4px,-4px)}}
+.flv-hint{display:flex;justify-content:center;color:var(--muted);transition:opacity .4s}
+.flv-hint b{width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);animation:flvHint 1.4s ease-in-out infinite}
+@keyframes flvHint{50%{transform:rotate(45deg) translate(4px,4px)}}
 .flv.moved .flv-hint{opacity:0}
 .flv-meta{color:var(--muted);font-size:15px;margin:0 0 20px}
 .bubbles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
@@ -277,7 +277,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:16px;font-weig
         <a class="btn" href="#quiz">Узнать оптовую цену</a>
       </div>
       <div class="flv-can">
-        <div class="flv-rail" aria-hidden="true"><div class="flv-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="flv-hint">листайте<b></b></span></div>
+        <div class="flv-rail" aria-hidden="true"><div class="flv-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="flv-hint"><b></b></span></div>
         <div class="flv-float"><div class="flv-deck" id="flvDeck">
         <figure class="flv-card"><img src="/images/kinza-cola.webp" srcset="/images/kinza-cola-800.webp 800w, /images/kinza-cola.webp 1200w" sizes="(max-width:860px) 300px, 480px" alt="Kinza Cola" width="1200" height="1600" loading="lazy" decoding="async"></figure>
         <figure class="flv-card"><img src="/images/kinza-diet-cola.webp" srcset="/images/kinza-diet-cola-800.webp 800w, /images/kinza-diet-cola.webp 1200w" sizes="(max-width:860px) 300px, 480px" alt="Kinza Diet Cola" width="1200" height="1600" loading="lazy" decoding="async"></figure>
