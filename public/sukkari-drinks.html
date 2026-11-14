@@ -121,7 +121,8 @@ footer{padding:40px 0;color:var(--muted);font-size:14px;border-top:1px solid var
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .wa{position:fixed;right:22px;bottom:22px;z-index:40;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.2)}
 @media(max-width:560px){.wa{width:64px;height:64px;right:16px;bottom:calc(32px + env(safe-area-inset-bottom))}.wa svg{width:36px;height:36px}}
-.fld input.err{border-color:#D62839;box-shadow:0 0 0 3px rgba(214,40,57,.15)}
+.fld input.err,.stp input.err{border-color:#D62839;box-shadow:0 0 0 3px rgba(214,40,57,.15)}
+.stp{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden}.stp button{width:64px;border:0;background:var(--soft);font:600 26px/1 'Golos Text';color:var(--ink);cursor:pointer}.stp button:active{background:var(--gl)}.stp input{flex:1;min-width:0;height:60px;border:0;text-align:center;font:800 28px 'Golos Text';outline:none;-moz-appearance:textfield}.stp input::-webkit-inner-spin-button,.stp input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.chp{display:flex;gap:8px;margin-top:10px}.chp button{flex:1;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;font:600 14px 'Golos Text';color:var(--ink);cursor:pointer}.chp button.on{border-color:#D62839;background:var(--gl);color:#D62839}.sum{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--gl)}.sum span{flex-basis:100%;font-size:14px;color:var(--muted)}.sum b{font-size:26px;font-weight:900;color:#D62839}.sum em{font-style:normal;font-size:14px;color:var(--muted)}
 </style>
 <style>
 :root{--g:#D62839;--g2:#B51E2E;--gl:#FDECEC}
@@ -224,11 +225,9 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:16px;font-weig
     <div class="bar"><i id="bar"></i></div>
     <div class="q on" data-i="0">
       <p>1. Сколько блоков нужно?</p>
-      <div class="opts">
-        <label><input type="radio" name="vol" value="до 10 блоков" checked>До 10 блоков</label>
-        <label><input type="radio" name="vol" value="10–50 блоков">10–50 блоков</label>
-        <label><input type="radio" name="vol" value="больше 50 блоков">Больше 50 блоков</label>
-      </div>
+      <div class="stp"><button type="button" data-d="-1" aria-label="Меньше">−</button><input name="vol" type="number" inputmode="numeric" min="1" max="9999" value="10" aria-label="Количество блоков"><button type="button" data-d="1" aria-label="Больше">+</button></div>
+      <div class="chp"><button type="button" data-v="10">10</button><button type="button" data-v="50">50</button><button type="button" data-v="100">Паллет</button></div>
+      <div class="sum"><span id="sumL">10 блоков × 4608 ₸</span><b id="sumV">46 080 ₸</b><em>+ доставка</em></div>
     </div>
     <div class="q" data-i="1">
       <p>2. Город доставки</p>
@@ -324,10 +323,20 @@ if(a.href.indexOf('wa.me')>-1)goal('whatsapp_click');else if(a.href.indexOf('tel
   function start(){if(!started){started=true;goal('quiz_start')}}
   function show(){qs.forEach(function(q,k){q.classList.toggle('on',k===i)});bar.style.width=((i+1)/qs.length*100)+'%';prev.style.display=i?'':'none';next.textContent=i===qs.length-1?'Получить расчёт':'Далее →';consent.style.display=i===qs.length-1?'':'none';}
   f.addEventListener('change',start);
+  var PRICE=4608,vin=f.vol,sumL=document.getElementById('sumL'),sumV=document.getElementById('sumV'),chips=f.querySelectorAll('.chp button');
+  function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+  function word(n){var a=n%10,b=n%100;return a===1&&b!==11?'блок':a>=2&&a<=4&&(b<12||b>14)?'блока':'блоков'}
+  function cnt(){var n=parseInt(vin.value,10);return n>0?Math.min(n,9999):0}
+  function upd(){var n=cnt();sumL.textContent=n?n+' '+word(n)+' × '+PRICE+' ₸':'Укажите количество блоков';sumV.textContent=n?fmt(n*PRICE)+' ₸':'—';chips.forEach(function(c){c.classList.toggle('on',+c.dataset.v===n)})}
+  function setN(n){vin.value=Math.max(1,Math.min(9999,n));upd();start()}
+  f.querySelectorAll('.stp button').forEach(function(b){b.onclick=function(){setN((cnt()||0)+(+b.dataset.d))}});
+  chips.forEach(function(c){c.onclick=function(){setN(+c.dataset.v)}});
+  vin.addEventListener('input',upd);
   prev.onclick=function(){i=Math.max(0,i-1);show()};
   next.onclick=function(){
+    if(i===0&&!cnt()){vin.focus();vin.classList.add('err');return}vin.classList.remove('err');
     if(i<qs.length-1){start();i++;goal('quiz_step'+(i+1));show();f.city.focus();return}
-    var city=f.city.value.trim(),vol=f.vol.value;
+    var city=f.city.value.trim(),n=cnt(),vol=n+' '+word(n)+' ('+fmt(n*PRICE)+' ₸ без доставки)';
     if(!city){f.city.focus();f.city.classList.add('err');return}
     f.city.classList.remove('err');
     goal('lead_submit',{vol:vol,city:city});
@@ -335,7 +344,7 @@ if(a.href.indexOf('wa.me')>-1)goal('whatsapp_click');else if(a.href.indexOf('tel
     var w=window.open(url,'_blank','noopener');if(!w)location.href=url;
   };
   f.addEventListener('submit',function(e){e.preventDefault();next.click()});
-  show();
+  upd();show();
 })();
 </script>
 
