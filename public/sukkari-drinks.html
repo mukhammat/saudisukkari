@@ -121,6 +121,8 @@ footer{padding:40px 0;color:var(--muted);font-size:14px;border-top:1px solid var
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .wa{position:fixed;right:22px;bottom:22px;z-index:40;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.2)}
 @media(max-width:560px){.wa{width:64px;height:64px;right:16px;bottom:calc(32px + env(safe-area-inset-bottom))}.wa svg{width:36px;height:36px}}
+.fld input.err,.stp input.err{border-color:#D62839;box-shadow:0 0 0 3px rgba(214,40,57,.15)}
+.stp{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:12px;overflow:hidden}.stp button{width:64px;border:0;background:var(--soft);font:600 26px/1 'Golos Text';color:var(--ink);cursor:pointer}.stp button:active{background:var(--gl)}.stp input{flex:1;min-width:0;height:60px;border:0;text-align:center;font:800 28px 'Golos Text';outline:none;-moz-appearance:textfield}.stp input::-webkit-inner-spin-button,.stp input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.chp{display:flex;gap:8px;margin-top:10px}.chp button{flex:1;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;font:600 14px 'Golos Text';color:var(--ink);cursor:pointer}.chp button.on{border-color:#D62839;background:var(--gl);color:#D62839}.sum{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--gl)}.sum span{flex-basis:100%;font-size:14px;color:var(--muted)}.sum b{font-size:26px;font-weight:900;color:#D62839}.sum em{font-style:normal;font-size:14px;color:var(--muted)}
 </style>
 <style>
 :root{--g:#D62839;--g2:#B51E2E;--gl:#FDECEC}
@@ -219,39 +221,24 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:16px;font-weig
   </div>
 
   <form class="quiz" id="quiz">
-    <h2>Узнайте оптовую цену на Kinza за 3 вопроса</h2>
+    <h2>Рассчитайте доставку Kinza за 2 вопроса</h2>
     <div class="bar"><i id="bar"></i></div>
     <div class="q on" data-i="0">
-      <p>1. Для чего закупаете?</p>
-      <div class="opts">
-        <label><input type="radio" name="need" value="Магазин / сеть" checked>Магазин или сеть</label>
-        <label><input type="radio" name="need" value="HoReCa">Кафе, ресторан, HoReCa</label>
-        <label><input type="radio" name="need" value="Оптовая перепродажа">Оптовая перепродажа</label>
-        <label><input type="radio" name="need" value="Маркетплейс">Маркетплейс (Ozon, Kaspi, WB)</label>
-      </div>
+      <p>1. Сколько блоков нужно?</p>
+      <div class="stp"><button type="button" data-d="-1" aria-label="Меньше">−</button><input name="vol" type="number" inputmode="numeric" min="1" max="9999" value="10" aria-label="Количество блоков"><button type="button" data-d="1" aria-label="Больше">+</button></div>
+      <div class="chp"><button type="button" data-v="10">10</button><button type="button" data-v="50">50</button><button type="button" data-v="100">100</button></div>
+      <div class="sum"><span id="sumL">10 блоков × 4608 ₸</span><b id="sumV">46 080 ₸</b><em>+ доставка</em></div>
     </div>
     <div class="q" data-i="1">
-      <p>2. Какой примерно объём?</p>
-      <div class="opts">
-        <label><input type="radio" name="vol" value="Пробная партия" checked>Пробная партия</label>
-        <label><input type="radio" name="vol" value="1–5 паллет">1–5 паллет</label>
-        <label><input type="radio" name="vol" value="Фура">Фура и больше</label>
-        <label><input type="radio" name="vol" value="Пока не знаю">Пока не знаю — подскажите</label>
-      </div>
-    </div>
-    <div class="q" data-i="2">
-      <p>3. Куда прислать цену?</p>
+      <p>2. Город доставки</p>
       <div class="fld">
-        <input name="name" placeholder="Имя или компания" autocomplete="organization">
-        <input name="phone" type="tel" placeholder="Телефон / WhatsApp" autocomplete="tel">
-        <input name="city" placeholder="Город доставки">
+        <input name="city" placeholder="Например, Алматы" autocomplete="address-level2">
       </div>
     </div>
     <div class="nav"><button type="button" class="btn out" id="prev" style="display:none">Назад</button><button type="button" class="btn" id="next">Далее →</button></div>
-    <div class="gift">📷 Вместе с ценой — фото и видео товара с нашего склада</div>
-    <small>Цена придёт в WhatsApp в течение рабочего дня</small>
+    <div class="gift">📷 Вместе с расчётом — фото и видео товара с нашего склада</div>
+    <small>Откроется WhatsApp с готовым сообщением — останется нажать «Отправить»</small>
     <small id="consent" style="display:none">Нажимая кнопку, вы соглашаетесь с <a href="/privacy" target="_blank">политикой обработки персональных данных</a></small>
-    <div id="done" style="display:none;margin-top:14px;padding:14px;border-radius:10px;background:var(--gl);color:var(--g2);font-size:15px;text-align:center">Заявка принята. Пришлём цену в WhatsApp в течение рабочего дня.</div>
   </form>
 </div></div>
 
@@ -327,32 +314,37 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:16px;font-weig
 <a class="wa" href="https://wa.me/77081888099?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20Kinza%20%D0%BE%D0%BF%D1%82%D0%BE%D0%BC%20%D1%81%D0%BE%20%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D0%B0" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9A11.8 11.8 0 0 0 12.05 0Zm0 21.79a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.88 9.88 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35Z"/></svg></a>
 
 <script>
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;
+if(a.href.indexOf('wa.me')>-1)goal('whatsapp_click');else if(a.href.indexOf('tel:')===0)goal('phone_click');});
+</script>
+<script>
 (function(){
-  var f=document.getElementById('quiz'),qs=f.querySelectorAll('.q'),i=0,next=document.getElementById('next'),prev=document.getElementById('prev'),bar=document.getElementById('bar');
-  var consent=document.getElementById('consent'),done=document.getElementById('done'),started=false,sent=false;
+  var f=document.getElementById('quiz'),qs=f.querySelectorAll('.q'),i=0,next=document.getElementById('next'),prev=document.getElementById('prev'),bar=document.getElementById('bar'),consent=document.getElementById('consent'),started=false;
+  function start(){if(!started){started=true;goal('quiz_start')}}
   function show(){qs.forEach(function(q,k){q.classList.toggle('on',k===i)});bar.style.width=((i+1)/qs.length*100)+'%';prev.style.display=i?'':'none';next.textContent=i===qs.length-1?'Получить расчёт':'Далее →';consent.style.display=i===qs.length-1?'':'none';}
-  f.addEventListener('change',function(){if(!started){started=true;goal('quiz_start')}});
+  f.addEventListener('change',start);
+  var PRICE=4608,vin=f.vol,sumL=document.getElementById('sumL'),sumV=document.getElementById('sumV'),chips=f.querySelectorAll('.chp button');
+  function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+  function word(n){var a=n%10,b=n%100;return a===1&&b!==11?'блок':a>=2&&a<=4&&(b<12||b>14)?'блока':'блоков'}
+  function cnt(){var n=parseInt(vin.value,10);return n>0?Math.min(n,9999):0}
+  function upd(){var n=cnt();sumL.textContent=n?n+' '+word(n)+' × '+PRICE+' ₸':'Укажите количество блоков';sumV.textContent=n?fmt(n*PRICE)+' ₸':'—';chips.forEach(function(c){c.classList.toggle('on',+c.dataset.v===n)})}
+  function setN(n){vin.value=Math.max(1,Math.min(9999,n));upd();start()}
+  f.querySelectorAll('.stp button').forEach(function(b){b.onclick=function(){setN((cnt()||0)+(+b.dataset.d))}});
+  chips.forEach(function(c){c.onclick=function(){setN(+c.dataset.v)}});
+  vin.addEventListener('input',upd);
   prev.onclick=function(){i=Math.max(0,i-1);show()};
   next.onclick=function(){
-    if(i<qs.length-1){if(!started){started=true;goal('quiz_start')}i++;goal('quiz_step'+(i+1));show();return}
-    if(!f.name.value.trim()||f.phone.value.replace(/\D/g,'').length<6){(f.name.value.trim()?f.phone:f.name).focus();return}
-    var lead={need:'Kinza со склада · '+f.need.value,vol:f.vol.value,name:f.name.value.trim(),phone:f.phone.value.trim(),city:f.city.value.trim(),page:location.pathname};
-    try{var src=JSON.parse(sessionStorage.getItem('ss_src')||'{}');for(var k in src)lead[k]=src[k]}catch(e){}
-    if(!sent){
-      sent=true;goal('lead_submit',{need:lead.need,vol:lead.vol});
-      try{fetch('/api/lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(lead),keepalive:true}).catch(function(){})}catch(e){}
-    }
-    done.style.display='';
-    var t='Здравствуйте! Хочу Kinza оптом со склада.\nДля чего: '+f.need.value+'\nОбъём: '+lead.vol+'\nИмя/компания: '+lead.name+'\nТелефон: '+lead.phone+(lead.city?'\nГород: '+lead.city:'');
-    window.open('https://wa.me/77081888099?text='+encodeURIComponent(t),'_blank','noopener');
+    if(i===0&&!cnt()){vin.focus();vin.classList.add('err');return}vin.classList.remove('err');
+    if(i<qs.length-1){start();i++;goal('quiz_step'+(i+1));show();f.city.focus();return}
+    var city=f.city.value.trim(),n=cnt(),vol=n+' '+word(n)+' ('+fmt(n*PRICE)+' ₸ без доставки)';
+    if(!city){f.city.focus();f.city.classList.add('err');return}
+    f.city.classList.remove('err');
+    goal('lead_submit',{vol:vol,city:city});
+    var url='https://wa.me/77081888099?text='+encodeURIComponent('Здравствуйте! Хочу заказать Kinza оптом.\nОбъём: '+vol+'\nГород: '+city);
+    var w=window.open(url,'_blank','noopener');if(!w)location.href=url;
   };
-  document.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('a');if(!a)return;
-    if(a.href.indexOf('wa.me')>-1)goal('whatsapp_click');
-    else if(a.href.indexOf('tel:')===0)goal('phone_click');
-  });
   f.addEventListener('submit',function(e){e.preventDefault();next.click()});
-  show();
+  upd();show();
 })();
 </script>
 
