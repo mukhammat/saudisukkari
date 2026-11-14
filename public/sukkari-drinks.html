@@ -328,7 +328,7 @@ if(a.href.indexOf('wa.me')>-1)goal('whatsapp_click');else if(a.href.indexOf('tel
   function cnt(){var n=parseInt(vin.value,10);return n>0?Math.min(n,9999):0}
   function upd(){var n=cnt();sumL.textContent=n?n+' '+word(n)+' × '+PRICE+' ₸':'Укажите количество блоков';sumV.textContent=n?fmt(n*PRICE)+' ₸':'—';chips.forEach(function(c){c.classList.toggle('on',+c.dataset.v===n)})}
   function setN(n){vin.value=Math.max(1,Math.min(9999,n));upd();start()}
-  f.querySelectorAll('.stp button').forEach(function(b){b.onclick=function(){setN((cnt()||0)+(+b.dataset.d))}});
+  f.querySelectorAll('.stp button').forEach(function(b){b.onclick=function(){var n=cnt()||0,d=+b.dataset.d;setN(d>0?n+10:(n>10?Math.max(10,n-10):n))}});
   chips.forEach(function(c){c.onclick=function(){setN(+c.dataset.v)}});
   vin.addEventListener('input',upd);
   prev.onclick=function(){i=Math.max(0,i-1);show()};
